@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online tool to crop and compress images with adjustable quality settings. Optimize your images for web with our responsive cropping tool.">
+    <meta name="keywords" content="image cropper, photo compressor, image optimizer, web image tool, free image editor">
+    <meta name="author" content="Image Tools Pro">
+    <meta name="robots" content="index, follow">
+    <title>Image Crop & Compress Tool | Free Online Photo Optimizer</title>
+    <link rel="canonical" href="https://yourwebsite.com/image-cropper" />
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Image Crop & Compress Tool | Free Online Photo Optimizer">
+    <meta property="og:description" content="Free online tool to crop and compress images with adjustable quality settings.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/image-cropper">
+    <meta property="og:image" content="https://yourwebsite.com/images/cropper-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Image Crop & Compress Tool",
+      "description": "Free online tool to crop and compress images with adjustable quality settings.",
+      "url": "https://yourwebsite.com/image-cropper",
+      "applicationCategory": "ImageEditor",
+      "operatingSystem": "Web"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --medium-gray: #777;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--dark-gray);
+            background-color: #f9f9f9;
+            padding: 0;
+            margin: 0;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .ad-banner {
+            background-color: var(--light-gray);
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 5px;
+            border: 1px dashed #ccc;
+        }
+        
+        .ad-banner.horizontal {
+            width: 100%;
+            height: 90px;
+        }
+        
+        .ad-banner.vertical {
+            width: 300px;
+            height: 250px;
+            margin: 20px auto;
+        }
+        
+        main {
+            padding: 20px 0 40px;
+        }
+        
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .tool-description {
+            text-align: center;
+            margin-bottom: 30px;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .upload-section {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 30px;
+            border: 2px dashed var(--light-gray);
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        
+        .upload-section:hover {
+            border-color: var(--primary-color);
+        }
+        
+        .upload-section.drag-over {
+            background-color: rgba(66, 133, 244, 0.1);
+            border-color: var(--primary-color);
+        }
+        
+        .upload-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+            margin-bottom: 15px;
+        }
+        
+        .upload-btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .file-input {
+            display: none;
+        }
+        
+        .controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .control-group {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark-gray);
+        }
+        
+        select, input[type="range"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: white;
+        }
+        
+        input[type="range"] {
+            -webkit-appearance: none;
+            height: 8px;
+            background: #ddd;
+            border-radius: 5px;
+            padding: 0;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            cursor: pointer;
+            border-radius: 50%;
+        }
+        
+        .range-value {
+            display: inline-block;
+            margin-left: 10px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .preview-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+        
+        .image-container {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-wrapper {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+            background-color: var(--light-gray);
+        }
+        
+        #image-preview, #cropped-preview {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background-color: white;
+        }
+        
+        .preview-label {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            z-index: 10;
+        }
+        
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+            border: none;
+            font-weight: 600;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary:hover {
+            background-color: #2d9249;
+        }
+        
+        .btn-reset {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-reset:hover {
+            background-color: #d33426;
+        }
+        
+        .file-info {
+            margin-top: 15px;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+        
+        .download-info {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: var(--medium-gray);
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        
+        .copyright {
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .control-group {
+                width: 100%;
+            }
+            
+            .preview-section {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .image-container {
+                width: 100%;
+            }
+            
+            .ad-banner.vertical {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+        
+        /* Cropper.js overlay styles */
+        .cropper-modal {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        
+        .cropper-view-box {
+            outline: 2px solid var(--primary-color);
+            outline-color: rgba(66, 133, 244, 0.75);
+        }
+        
+        .cropper-line {
+            background-color: var(--primary-color);
+        }
+        
+        .cropper-point {
+            background-color: var(--primary-color);
+            opacity: 1;
+            width: 8px;
+            height: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/" class="logo">ImageTools Pro</a>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Tools</a>
+                <a href="#">About</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- Horizontal Ad Banner -->
+        <div class="ad-banner horizontal">
+            <!-- Replace with your Google AdSense code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- ImageCropper_Top -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+        
+        <h1>Image Crop & Compress Tool</h1>
+        <p class="tool-description">
+            Free online tool to crop and compress your images. Adjust the quality and dimensions to optimize 
+            your photos for web use. Perfect for bloggers, webmasters, and social media managers.
+        </p>
+        
+        <div class="tool-container">
+            <div class="upload-section" id="drop-area">
+                <button class="upload-btn" id="upload-btn">Select Image</button>
+                <input type="file" id="file-input" class="file-input" accept="image/*">
+                <p>or drag and drop image here</p>
+                <div class="file-info" id="file-info"></div>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label for="compression-level">Compression Level: <span id="compression-value" class="range-value">70</span>%</label>
+                    <input type="range" id="compression-level" min="10" max="95" value="70">
+                </div>
+                
+                <div class="control-group">
+                    <label for="output-format">Output Format:</label>
+                    <select id="output-format">
+                        <option value="auto">Auto (same as input)</option>
+                        <option value="jpeg">JPEG</option>
+                        <option value="png">PNG</option>
+                        <option value="webp">WebP</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="preview-section">
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <div class="preview-label">Original Image</div>
+                        <img id="image-preview" alt="Original image preview">
+                    </div>
+                </div>
+                
+                <div class="image-container">
+                    <div class="image-wrapper">
+                        <div class="preview-label">Cropped Preview</div>
+                        <img id="cropped-preview" alt="Cropped image preview">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Vertical Ad Banner -->
+            <div class="ad-banner vertical">
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <!-- ImageCropper_Sidebar -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID_2"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="crop-btn" class="btn btn-primary" disabled>Crop Image</button>
+                <button id="download-btn" class="btn btn-secondary" disabled>Download</button>
+                <button id="reset-btn" class="btn btn-reset">Reset</button>
+            </div>
+            
+            <div class="download-info" id="download-info"></div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">API</a>
+                <a href="#">Blog</a>
+            </div>
+            <p class="copyright">© 2023 ImageTools Pro. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <!-- Include Cropper.js library -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM elements
+            const fileInput = document.getElementById('file-input');
+            const uploadBtn = document.getElementById('upload-btn');
+            const dropArea = document.getElementById('drop-area');
+            const fileInfo = document.getElementById('file-info');
+            const imagePreview = document.getElementById('image-preview');
+            const croppedPreview = document.getElementById('cropped-preview');
+            const compressionLevel = document.getElementById('compression-level');
+            const compressionValue = document.getElementById('compression-value');
+            const outputFormat = document.getElementById('output-format');
+            const cropBtn = document.getElementById('crop-btn');
+            const downloadBtn = document.getElementById('download-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const downloadInfo = document.getElementById('download-info');
+            
+            // Global variables
+            let cropper;
+            let originalFile;
+            let croppedBlob;
+            
+            // Initialize event listeners
+            uploadBtn.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', handleFileSelect);
+            dropArea.addEventListener('dragover', handleDragOver);
+            dropArea.addEventListener('dragleave', handleDragLeave);
+            dropArea.addEventListener('drop', handleDrop);
+            compressionLevel.addEventListener('input', updateCompressionValue);
+            cropBtn.addEventListener('click', cropImage);
+            downloadBtn.addEventListener('click', downloadImage);
+            resetBtn.addEventListener('click', resetTool);
+            
+            // Update compression value display
+            function updateCompressionValue() {
+                compressionValue.textContent = compressionLevel.value;
+            }
+            
+            // Handle file selection
+            function handleFileSelect(e) {
+                const file = e.target.files[0] || (e.dataTransfer && e.dataTransfer.files[0]);
+                if (file && file.type.match('image.*')) {
+                    processFile(file);
+                }
+            }
+            
+            // Handle drag over
+            function handleDragOver(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.classList.add('drag-over');
+            }
+            
+            // Handle drag leave
+            function handleDragLeave(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.classList.remove('drag-over');
+            }
+            
+            // Handle drop
+            function handleDrop(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                dropArea.classList.remove('drag-over');
+                handleFileSelect(e);
+            }
+            
+            // Process selected file
+            function processFile(file) {
+                originalFile = file;
+                
+                // Display file info
+                fileInfo.textContent = `${file.name} (${formatFileSize(file.size)})`;
+                
+                // Create image preview
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    imagePreview.src = e.target.result;
+                    
+                    // Initialize cropper when image is loaded
+                    imagePreview.onload = function() {
+                        initCropper();
+                        cropBtn.disabled = false;
+                    };
+                };
+                reader.readAsDataURL(file);
+            }
+            
+            // Initialize cropper
+            function initCropper() {
+                if (cropper) {
+                    cropper.destroy();
+                }
+                
+                cropper = new Cropper(imagePreview, {
+                    aspectRatio: NaN, // Free ratio
+                    viewMode: 1,
+                    autoCropArea: 0.8,
+                    responsive: true,
+                    restore: true,
+                    guides: true,
+                    center: true,
+                    highlight: true,
+                    cropBoxMovable: true,
+                    cropBoxResizable: true,
+                    toggleDragModeOnDblclick: false,
+                    background: false,
+                    zoomOnWheel: true
+                });
+            }
+            
+            // Crop image
+            function cropImage() {
+                if (!cropper) return;
+                
+                // Get cropped canvas
+                const canvas = cropper.getCroppedCanvas({
+                    minWidth: 50,
+                    minHeight: 50,
+                    maxWidth: 4096,
+                    maxHeight: 4096,
+                    fillColor: '#fff',
+                    imageSmoothingEnabled: true,
+                    imageSmoothingQuality: 'high'
+                });
+                
+                if (!canvas) {
+                    alert('Please select a crop area');
+                    return;
+                }
+                
+                // Update preview
+                croppedPreview.src = canvas.toDataURL(originalFile.type);
+                
+                // Convert canvas to blob with specified quality
+                const format = outputFormat.value === 'auto' ? 
+                    originalFile.type.split('/')[1] : outputFormat.value;
+                
+                const mimeType = `image/${format}`;
+                const quality = parseInt(compressionLevel.value) / 100;
+                
+                canvas.toBlob(function(blob) {
+                    croppedBlob = blob;
+                    downloadBtn.disabled = false;
+                    
+                    // Show download info
+                    downloadInfo.textContent = `Cropped image size: ${formatFileSize(blob.size)} (${Math.round((blob.size / originalFile.size) * 100)}% of original)`;
+                }, mimeType, quality);
+            }
+            
+            // Download image
+            function downloadImage() {
+                if (!croppedBlob) return;
+                
+                const url = URL.createObjectURL(croppedBlob);
+                const a = document.createElement('a');
+                a.href = url;
+                
+                // Generate filename
+                const originalName = originalFile.name.split('.')[0];
+                const format = outputFormat.value === 'auto' ? 
+                    originalFile.type.split('/')[1] : outputFormat.value;
+                a.download = `${originalName}-cropped.${format}`;
+                
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            }
+            
+            // Reset tool
+            function resetTool() {
+                // Clear file input
+                fileInput.value = '';
+                
+                // Reset previews
+                imagePreview.src = '';
+                croppedPreview.src = '';
+                
+                // Reset file info
+                fileInfo.textContent = '';
+                downloadInfo.textContent = '';
+                
+                // Reset buttons
+                cropBtn.disabled = true;
+                downloadBtn.disabled = true;
+                
+                // Destroy cropper if exists
+                if (cropper) {
+                    cropper.destroy();
+                    cropper = null;
+                }
+                
+                // Reset original file
+                originalFile = null;
+                croppedBlob = null;
+                
+                // Reset controls to defaults
+                compressionLevel.value = 70;
+                compressionValue.textContent = '70';
+                outputFormat.value = 'auto';
+            }
+            
+            // Format file size
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+        });
+    </script>
+</body>
+</html>
