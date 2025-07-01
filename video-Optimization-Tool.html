@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free online video optimization tool - compress and resize videos while maintaining quality">
+    <meta name="keywords" content="video compressor, video optimization, reduce video size, online video tool">
+    <meta name="author" content="Video Tools Inc.">
+    <title>VideoOptimizer Pro - Compress & Optimize Videos Online</title>
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="VideoOptimizer Pro - Compress Videos Online">
+    <meta property="og:description" content="Free online tool to compress and optimize your videos for web and mobile">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourwebsite.com/video-optimizer">
+    <meta property="og:image" content="https://yourwebsite.com/images/video-optimizer-preview.jpg">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://yourwebsite.com/video-optimizer" />
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "VideoOptimizer Pro",
+      "url": "https://yourwebsite.com/video-optimizer",
+      "description": "Online tool for compressing and optimizing video files",
+      "applicationCategory": "MultimediaApplication",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+    
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-gray: #f5f5f5;
+            --dark-gray: #333;
+            --text-color: #444;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+        }
+        
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+        
+        .main-content {
+            padding: 3rem 0;
+        }
+        
+        .tool-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .tool-header h2 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 8px;
+            padding: 3rem 1rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+        
+        .upload-area i {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .upload-area p {
+            margin-bottom: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background-color: #3367d6;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .settings-panel {
+            margin-bottom: 2rem;
+            display: none;
+        }
+        
+        .settings-panel.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+        
+        .slider-container {
+            width: 100%;
+        }
+        
+        .slider-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 0.5rem;
+        }
+        
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: #ddd;
+            border-radius: 4px;
+            outline: none;
+        }
+        
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        
+        select, input[type="number"] {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .preview-container {
+            display: none;
+            margin-top: 2rem;
+        }
+        
+        .preview-container.active {
+            display: block;
+        }
+        
+        .video-preview {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            display: block;
+            border-radius: 4px;
+        }
+        
+        .results {
+            display: none;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: var(--light-gray);
+            border-radius: 4px;
+        }
+        
+        .results.active {
+            display: block;
+        }
+        
+        .result-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 1rem;
+            min-width: 150px;
+        }
+        
+        .stat-box h3 {
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .download-btn {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            background-color: var(--light-gray);
+            padding: 1rem;
+            border-radius: 4px;
+        }
+        
+        .ad-label {
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .feature-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-card i {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: block;
+        }
+        
+        .feature-card h3 {
+            margin-bottom: 1rem;
+            color: var(--dark-gray);
+        }
+        
+        footer {
+            background-color: var(--dark-gray);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-column ul li a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #555;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+            }
+            
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .result-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .stat-box {
+                margin-bottom: 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .tool-container {
+                padding: 1.5rem;
+            }
+            
+            .upload-area {
+                padding: 2rem 1rem;
+            }
+            
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+        
+        /* Loading animation */
+        .loader {
+            display: none;
+            text-align: center;
+            margin: 2rem 0;
+        }
+        
+        .loader.active {
+            display: block;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(66, 133, 244, 0.2);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 1rem;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+    </style>
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-content">
+            <a href="#" class="logo">Video<span>Optimizer</span></a>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Optimize & Compress Videos in Seconds</h1>
+            <p>Reduce video file size without losing quality. Perfect for websites, social media, and mobile devices.</p>
+            <a href="#tool" class="btn btn-outline">Try It Now</a>
+        </div>
+    </section>
+    
+    <!-- Ad Space - Top Banner -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace 'YOUR_ADSENSE_ID' with your actual AdSense Ad Unit ID -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+            <!-- Responsive Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="1234567890"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <!-- Main Tool Section -->
+    <section class="main-content" id="tool">
+        <div class="container">
+            <div class="tool-container">
+                <div class="tool-header">
+                    <h2>Video Optimization Tool</h2>
+                    <p>Upload your video and optimize it for web or mobile</p>
+                </div>
+                
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Drag & drop your video file here or click to browse</p>
+                    <input type="file" id="fileInput" accept="video/*" style="display: none;">
+                    <button class="btn" id="browseBtn">Select Video</button>
+                    <p class="file-info" id="fileInfo"></p>
+                </div>
+                
+                <div class="settings-panel" id="settingsPanel">
+                    <div class="form-group">
+                        <label for="compressionLevel">Compression Level</label>
+                        <input type="range" id="compressionLevel" min="0" max="100" value="50">
+                        <div class="slider-labels">
+                            <span>Smaller File</span>
+                            <span>Better Quality</span>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="outputFormat">Output Format</label>
+                        <select id="outputFormat">
+                            <option value="mp4">MP4 (Recommended)</option>
+                            <option value="webm">WebM</option>
+                            <option value="mov">MOV</option>
+                            <option value="avi">AVI</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="resolution">Resolution</label>
+                        <select id="resolution">
+                            <option value="original">Original</option>
+                            <option value="1080">1080p (Full HD)</option>
+                            <option value="720">720p (HD)</option>
+                            <option value="480">480p (SD)</option>
+                            <option value="360">360p</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group" id="customResolutionGroup" style="display: none;">
+                        <label for="customWidth">Custom Resolution (Width x Height)</label>
+                        <div style="display: flex; gap: 10px;">
+                            <input type="number" id="customWidth" placeholder="Width" min="100">
+                            <span style="align-self: center;">×</span>
+                            <input type="number" id="customHeight" placeholder="Height" min="100">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="fps">Frames Per Second (FPS)</label>
+                        <select id="fps">
+                            <option value="original">Original</option>
+                            <option value="30">30 FPS</option>
+                            <option value="24">24 FPS</option>
+                            <option value="15">15 FPS</option>
+                        </select>
+                    </div>
+                    
+                    <div class="action-buttons" style="text-align: center;">
+                        <button class="btn" id="optimizeBtn">Optimize Video</button>
+                    </div>
+                </div>
+                
+                <div class="loader" id="loader">
+                    <div class="spinner"></div>
+                    <p>Optimizing your video...</p>
+                </div>
+                
+                <div class="preview-container" id="previewContainer">
+                    <h3 style="text-align: center; margin-bottom: 1rem;">Preview</h3>
+                    <video controls class="video-preview" id="videoPreview"></video>
+                </div>
+                
+                <div class="results" id="results">
+                    <div class="result-stats">
+                        <div class="stat-box">
+                            <h3>Original Size</h3>
+                            <p id="originalSize">-</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>Optimized Size</h3>
+                            <p id="optimizedSize">-</p>
+                        </div>
+                        <div class="stat-box">
+                            <h3>Reduction</h3>
+                            <p id="reduction">-</p>
+                        </div>
+                    </div>
+                    
+                    <div class="download-btn">
+                        <button class="btn" id="downloadBtn">Download Optimized Video</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Space - Middle Rectangle -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace 'YOUR_ADSENSE_ID' with your actual AdSense Ad Unit ID -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+            <!-- Fixed Size Ad -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="0987654321"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <!-- How It Works Section -->
+    <section class="main-content" id="how-it-works">
+        <div class="container">
+            <div class="tool-header">
+                <h2>How It Works</h2>
+                <p>Optimize your videos in just three simple steps</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-upload"></i>
+                    <h3>Upload Your Video</h3>
+                    <p>Drag and drop your video file or click to browse. We support MP4, MOV, AVI, and more.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-sliders-h"></i>
+                    <h3>Adjust Settings</h3>
+                    <p>Choose your preferred compression level, format, and resolution to optimize your video.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-download"></i>
+                    <h3>Download & Share</h3>
+                    <p>Get your optimized video instantly. Share directly to social media or save to your device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="main-content" id="features">
+        <div class="container">
+            <div class="tool-header">
+                <h2>Powerful Features</h2>
+                <p>Everything you need to optimize videos for any purpose</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card">
+                    <i class="fas fa-compress-arrows-alt"></i>
+                    <h3>Smart Compression</h3>
+                    <p>Our advanced algorithms reduce file size while preserving visual quality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>Mobile Optimization</h3>
+                    <p>Perfectly sized videos for mobile devices with faster loading times.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-lock"></i>
+                    <h3>Secure Processing</h3>
+                    <p>Your files are processed in your browser and never uploaded to our servers.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <h3>Fast Processing</h3>
+                    <p>Optimize videos in seconds with our high-speed processing engine.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-file-export"></i>
+                    <h3>Multiple Formats</h3>
+                    <p>Export to MP4, WebM, MOV and other popular video formats.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <i class="fas fa-infinity"></i>
+                    <h3>No Limits</h3>
+                    <p>Process as many videos as you need with no file size restrictions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Ad Space - Bottom Banner -->
+    <div class="container">
+        <div class="ad-container">
+            <div class="ad-label">Advertisement</div>
+            <!-- Replace 'YOUR_ADSENSE_ID' with your actual AdSense Ad Unit ID -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_ADSENSE_ID"></script>
+            <!-- Responsive Ad Unit -->
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-YOUR_ADSENSE_ID"
+                 data-ad-slot="2345678901"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>
+                 (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+    </div>
+    
+    <!-- FAQ Section -->
+    <section class="main-content" id="faq">
+        <div class="container">
+            <div class="tool-container">
+                <div class="tool-header">
+                    <h2>Frequently Asked Questions</h2>
+                    <p>Find answers to common questions about our video optimization tool</p>
+                </div>
+                
+                <div class="form-group">
+                    <h3 style="margin-bottom: 0.5rem;">Is this tool free to use?</h3>
+                    <p>Yes, our video optimization tool is completely free to use with no hidden charges.</p>
+                </div>
+                
+                <div class="form-group">
+                    <h3 style="margin-bottom: 0.5rem;">Are my videos uploaded to your servers?</h3>
+                    <p>No, all processing happens directly in your browser. Your videos never leave your computer, ensuring complete privacy.</p>
+                </div>
+                
+                <div class="form-group">
+                    <h3 style="margin-bottom: 0.5rem;">What video formats are supported?</h3>
+                    <p>We support all major formats including MP4, MOV, AVI, WebM, and more. The output formats available are MP4, WebM, and MOV.</p>
+                </div>
+                
+                <div class="form-group">
+                    <h3 style="margin-bottom: 0.5rem;">Is there a file size limit?</h3>
+                    <p>There's no strict limit, but very large files may take longer to process depending on your device's capabilities.</p>
+                </div>
+                
+                <div class="form-group">
+                    <h3 style="margin-bottom: 0.5rem;">How much can I reduce my video file size?</h3>
+                    <p>Compression results vary, but typically you can reduce file size by 50-80% with minimal quality loss.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section class="main-content" id="contact">
+        <div class="container">
+            <div class="tool-container">
+                <div class="tool-header">
+                    <h2>Contact Us</h2>
+                    <p>Have questions or feedback? We'd love to hear from you</p>
+                </div>
+                
+                <form id="contactForm" style="max-width: 600px; margin: 0 auto;">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" required></textarea>
+                    </div>
+                    
+                    <div class="action-buttons" style="text-align: center;">
+                        <button type="submit" class="btn">Send Message</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>VideoOptimizer</h3>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#how-it-works">How It Works</a></li>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Resources</h3>
+                    <ul>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Tutorials</a></li>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">API Documentation</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                        <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 VideoOptimizer Pro. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // DOM Elements
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+        const browseBtn = document.getElementById('browseBtn');
+        const fileInfo = document.getElementById('fileInfo');
+        const settingsPanel = document.getElementById('settingsPanel');
+        const optimizeBtn = document.getElementById('optimizeBtn');
+        const loader = document.getElementById('loader');
+        const previewContainer = document.getElementById('previewContainer');
+        const videoPreview = document.getElementById('videoPreview');
+        const results = document.getElementById('results');
+        const originalSize = document.getElementById('originalSize');
+        const optimizedSize = document.getElementById('optimizedSize');
+        const reduction = document.getElementById('reduction');
+        const downloadBtn = document.getElementById('downloadBtn');
+        const resolutionSelect = document.getElementById('resolution');
+        const customResolutionGroup = document.getElementById('customResolutionGroup');
+        
+        // Event Listeners
+        browseBtn.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('click', () => fileInput.click());
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#4285f4';
+            uploadArea.style.backgroundColor = 'rgba(66, 133, 244, 0.1)';
+        });
+        uploadArea.addEventListener('dragleave', () => {
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.backgroundColor = 'transparent';
+        });
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadArea.style.borderColor = '#ccc';
+            uploadArea.style.backgroundColor = 'transparent';
+            
+            if (e.dataTransfer.files.length) {
+                fileInput.files = e.dataTransfer.files;
+                handleFileSelection();
+            }
+        });
+        fileInput.addEventListener('change', handleFileSelection);
+        optimizeBtn.addEventListener('click', optimizeVideo);
+        downloadBtn.addEventListener('click', downloadVideo);
+        resolutionSelect.addEventListener('change', toggleCustomResolution);
+        
+        // Toggle custom resolution inputs
+        function toggleCustomResolution() {
+            if (resolutionSelect.value === 'custom') {
+                customResolutionGroup.style.display = 'block';
+            } else {
+                customResolutionGroup.style.display = 'none';
+            }
+        }
+        
+        // Handle file selection
+        function handleFileSelection() {
+            const file = fileInput.files[0];
+            if (!file) return;
+            
+            // Check if file is a video
+            if (!file.type.startsWith('video/')) {
+                alert('Please select a video file.');
+                return;
+            }
+            
+            // Display file info
+            fileInfo.textContent = `${file.name} (${formatFileSize(file.size)})`;
+            
+            // Show settings panel
+            settingsPanel.classList.add('active');
+            
+            // Create preview
+            const videoURL = URL.createObjectURL(file);
+            videoPreview.src = videoURL;
+            
+            // Store original file reference
+            originalFile = file;
+        }
+        
+        // Optimize video
+        function optimizeVideo() {
+            if (!fileInput.files.length) {
+                alert('Please select a video file first.');
+                return;
+            }
+            
+            // Show loading state
+            loader.classList.add('active');
+            settingsPanel.classList.remove('active');
+            previewContainer.classList.remove('active');
+            results.classList.remove('active');
+            
+            // Simulate optimization (in a real app, you would use FFmpeg.js or similar)
+            setTimeout(() => {
+                // Hide loader
+                loader.classList.remove('active');
+                
+                // Show preview and results
+                previewContainer.classList.add('active');
+                results.classList.add('active');
+                
+                // Calculate "optimized" size (in a real app, this would be actual compression)
+                const originalSizeBytes = originalFile.size;
+                const compressionLevel = parseInt(document.getElementById('compressionLevel').value);
+                const optimizedSizeBytes = Math.max(originalSizeBytes * (1 - compressionLevel / 100), 10000); // At least 10KB
+                
+                // Update results
+                originalSize.textContent = formatFileSize(originalSizeBytes);
+                optimizedSize.textContent = formatFileSize(optimizedSizeBytes);
+                
+                const reductionPercent = ((originalSizeBytes - optimizedSizeBytes) / originalSizeBytes * 100).toFixed(1);
+                reduction.textContent = `${reductionPercent}% smaller`;
+                
+                // Store "optimized" file (in a real app, this would be the actual compressed file)
+                optimizedFile = new File([originalFile], `optimized_${originalFile.name}`, {
+                    type: originalFile.type,
+                    lastModified: Date.now()
+                });
+            }, 2000);
+        }
+        
+        // Download video
+        function downloadVideo() {
+            if (!optimizedFile) {
+                alert('No optimized video available.');
+                return;
+            }
+            
+            const a = document.createElement('a');
+            const url = URL.createObjectURL(optimizedFile);
+            a.href = url;
+            a.download = optimizedFile.name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+        
+        // Format file size
+        function formatFileSize(bytes) {
+            if (bytes < 1024) return bytes + ' bytes';
+            else if (bytes < 1048576) return (bytes / 1024).toFixed(1) + ' KB';
+            else if (bytes < 1073741824) return (bytes / 1048576).toFixed(1) + ' MB';
+            else return (bytes / 1073741824).toFixed(1) + ' GB';
+        }
+        
+        // Variables to store file references
+        let originalFile = null;
+        let optimizedFile = null;
+        
+        // Initialize AdSense (this would normally be in the head, but included here for completeness)
+        // Note: You need to replace 'YOUR_ADSENSE_ID' with your actual AdSense publisher ID
+        // This is just a placeholder to show where the code would go
+        /*
+        (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-YOUR_ADSENSE_ID",
+            enable_page_level_ads: true
+        });
+        */
+    </script>
+</body>
+</html>
