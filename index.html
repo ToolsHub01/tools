@@ -820,52 +820,583 @@
 <!DOCTYPE html>
 
         
-        .tool-card {
-            background: #fff;
-            border-radius: 0.35rem;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 1.5rem;
-            transition: all 0.3s ease;
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Twitter Video Downloader - Download high-quality videos from Twitter in MP4 format. Fast, easy and no registration required.">
+    <meta name="keywords" content="twitter video downloader, download twitter videos, save twitter videos, twitter mp4 download, twitter video saver">
+    <meta name="author" content="ToolsHub">
+    <meta property="og:title" content="Twitter Video Downloader | ToolsHub">
+    <meta property="og:description" content="Download videos from Twitter in high quality MP4 format">
+    <meta property="og:url" content="https://toolshub01.github.io/tools/twitter-video-downloader">
+    <meta property="og:type" content="website">
+    <title>Twitter Video Downloader | ToolsHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #1da1f2;
+            --secondary-color: #14171a;
+            --background-color: #f5f8fa;
+            --text-color: #14171a;
+            --light-gray: #e1e8ed;
+            --dark-gray: #657786;
+            --white: #ffffff;
+            --error-color: #e0245e;
         }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0.5rem 2rem 0 rgba(58, 59, 69, 0.2);
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-        .tool-header {
-            padding: 1rem 1.35rem;
-            margin-bottom: 0;
-            background-color: #f8f9fc;
-            border-bottom: 1px solid #e3e6f0;
-            border-radius: 0.35rem 0.35rem 0 0;
-            font-weight: 600;
-            color: var(--primary-color);
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
         }
-        
-        .tool-body {
-            padding: 1.5rem;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--accent-color);
-            border-color: var(--accent-color);
-        }
-        
-        .drop-area {
-            border: 2px dashed #d1d3e2;
-            border-radius: 0.35rem;
-            padding: 2rem;
+
+        header {
             text-align: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            background-color: var(--secondary-color);
+            margin-bottom: 30px;
+            padding: 20px 0;
         }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: var(--dark-gray);
+            font-size: 1.2rem;
+        }
+
+        .main-tool {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .tool-title {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+            text-align: center;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--secondary-color);
+        }
+
+        .url-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .url-input:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .quality-selector {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .quality-option {
+            flex: 1;
+            min-width: 120px;
+        }
+
+        .quality-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: var(--light-gray);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .quality-btn:hover {
+            background-color: #d1d9e0;
+        }
+
+        .quality-btn.active {
+            background-color: var(--primary-color);
+            color: var(--white);
+        }
+
+        .download-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .download-btn:hover {
+            background-color: #1991da;
+        }
+
+        .download-btn:disabled {
+            background-color: var(--light-gray);
+            cursor: not-allowed;
+        }
+
+        .result-container {
+            display: none;
+            margin-top: 30px;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .video-preview {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 20px;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-preview video {
+            width: 100%;
+            display: block;
+        }
+
+        .download-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        .download-option {
+            padding: 12px 20px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .download-option:hover {
+            background-color: #1991da;
+        }
+
+        .error-message {
+            color: var(--error-color);
+            text-align: center;
+            margin-top: 20px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .how-to-use {
+            background-color: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: var(--secondary-color);
+        }
+
+        .steps {
+            list-style-type: none;
+        }
+
+        .steps li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+
+        .steps li:before {
+            content: counter(step);
+            counter-increment: step;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: var(--primary-color);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .ad-container {
+            background-color: var(--light-gray);
+            border-radius: 5px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: var(--dark-gray);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .tagline {
+                font-size: 1rem;
+            }
+            
+            .main-tool, .how-to-use {
+                padding: 20px;
+            }
+            
+            .tool-title, .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .quality-selector {
+                flex-direction: column;
+            }
+            
+            .quality-option {
+                min-width: 100%;
+            }
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">ToolsHub</div>
+            <div class="tagline">Your Ultimate Online Tools Collection</div>
+        </header>
+
+        <!-- AdSense Ad Unit -->
+        <div class="ad-container">
+            <!-- Replace with your AdSense ad unit code -->
+            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                crossorigin="anonymous"></script>
+            <!-- Twitter Video Downloader Top Ad -->
+            <ins class="adsbygoogle"
+                style="display:block"
+                data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                data-ad-slot="YOUR_AD_SLOT_ID"
+                data-ad-format="auto"
+                data-full-width-responsive="true"></ins>
+            <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+            </script>
+        </div>
+
+        <main>
+            <div class="main-tool">
+                <h1 class="tool-title">Twitter Video Downloader</h1>
+                <p style="text-align: center; margin-bottom: 20px; color: var(--dark-gray);">Download high-quality videos from Twitter in MP4 format</p>
+                
+                <div class="input-group">
+                    <label for="twitter-url" class="input-label">Twitter Video URL</label>
+                    <input type="url" id="twitter-url" class="url-input" placeholder="https://twitter.com/username/status/123456789" required>
+                </div>
+                
+                <div class="quality-selector">
+                    <div class="quality-option">
+                        <button class="quality-btn active" data-quality="highest">Highest Quality</button>
+                    </div>
+                    <div class="quality-option">
+                        <button class="quality-btn" data-quality="high">High Quality</button>
+                    </div>
+                    <div class="quality-option">
+                        <button class="quality-btn" data-quality="medium">Medium Quality</button>
+                    </div>
+                    <div class="quality-option">
+                        <button class="quality-btn" data-quality="low">Low Quality</button>
+                    </div>
+                </div>
+                
+                <button id="download-btn" class="download-btn">
+                    <i class="fas fa-download"></i> Download Video
+                </button>
+                
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <p>Processing your request...</p>
+                </div>
+                
+                <div class="error-message" id="error-message"></div>
+                
+                <div class="result-container" id="result-container">
+                    <h3 style="text-align: center; margin-bottom: 20px;">Your video is ready to download!</h3>
+                    <div class="video-preview">
+                        <video id="video-preview" controls>
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <div class="download-options" id="download-options">
+                        <!-- Download buttons will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Ad Unit -->
+            <div class="ad-container">
+                <!-- Replace with your AdSense ad unit code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <!-- Twitter Video Downloader Middle Ad -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID_2"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="how-to-use">
+                <h2 class="section-title">How to Download Twitter Videos</h2>
+                <ol class="steps">
+                    <li>Copy the URL of the Twitter video you want to download</li>
+                    <li>Paste the URL in the input field above</li>
+                    <li>Select your preferred video quality</li>
+                    <li>Click the "Download Video" button</li>
+                    <li>Wait for processing and then download your video</li>
+                </ol>
+            </div>
+
+            <div class="ad-container">
+                <!-- Replace with your AdSense ad unit code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <!-- Twitter Video Downloader Bottom Ad -->
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID_3"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2023 ToolsHub. All rights reserved.</p>
+            <p>This tool is not affiliated with Twitter.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Quality selector functionality
+            const qualityBtns = document.querySelectorAll('.quality-btn');
+            let selectedQuality = 'highest';
+            
+            qualityBtns.forEach(btn => {
+                btn.addEventListener('click', function() {
+                    qualityBtns.forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    selectedQuality = this.getAttribute('data-quality');
+                });
+            });
+            
+            // Download button functionality
+            const downloadBtn = document.getElementById('download-btn');
+            const twitterUrlInput = document.getElementById('twitter-url');
+            const resultContainer = document.getElementById('result-container');
+            const errorMessage = document.getElementById('error-message');
+            const loading = document.getElementById('loading');
+            
+            downloadBtn.addEventListener('click', function() {
+                const twitterUrl = twitterUrlInput.value.trim();
+                
+                if (!twitterUrl) {
+                    showError('Please enter a Twitter video URL');
+                    return;
+                }
+                
+                if (!isValidTwitterUrl(twitterUrl)) {
+                    showError('Please enter a valid Twitter video URL');
+                    return;
+                }
+                
+                // Show loading, hide error and result
+                loading.style.display = 'block';
+                errorMessage.style.display = 'none';
+                resultContainer.style.display = 'none';
+                downloadBtn.disabled = true;
+                
+                // Simulate API call with timeout (in a real app, you would call your backend here)
+                setTimeout(() => {
+                    processTwitterVideo(twitterUrl, selectedQuality);
+                }, 2000);
+            });
+            
+            function isValidTwitterUrl(url) {
+                const twitterRegex = /^https?:\/\/(?:www\.)?(?:twitter\.com|x\.com)\/\w+\/status\/\d+/i;
+                return twitterRegex.test(url);
+            }
+            
+            function showError(message) {
+                errorMessage.textContent = message;
+                errorMessage.style.display = 'block';
+                resultContainer.style.display = 'none';
+            }
+            
+            function processTwitterVideo(url, quality) {
+                loading.style.display = 'none';
+                downloadBtn.disabled = false;
+                
+                // This is a simulation - in a real app, you would get actual video data from an API
+                // For demonstration, we'll use a sample video
+                const sampleVideoUrl = 'https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4';
+                
+                // Set the video preview
+                const videoPreview = document.getElementById('video-preview');
+                videoPreview.src = sampleVideoUrl;
+                
+                // Generate download options (simulating different qualities)
+                const downloadOptions = document.getElementById('download-options');
+                downloadOptions.innerHTML = '';
+                
+                const qualities = [
+                    { name: 'Highest Quality (1080p)', url: sampleVideoUrl },
+                    { name: 'High Quality (720p)', url: sampleVideoUrl },
+                    { name: 'Medium Quality (480p)', url: sampleVideoUrl },
+                    { name: 'Low Quality (360p)', url: sampleVideoUrl }
+                ];
+                
+                // Filter based on selected quality
+                let filteredQualities = [];
+                switch(quality) {
+                    case 'highest':
+                        filteredQualities = [qualities[0]];
+                        break;
+                    case 'high':
+                        filteredQualities = [qualities[1]];
+                        break;
+                    case 'medium':
+                        filteredQualities = [qualities[2]];
+                        break;
+                    case 'low':
+                        filteredQualities = [qualities[3]];
+                        break;
+                    default:
+                        filteredQualities = qualities;
+                }
+                
+                filteredQualities.forEach((quality, index) => {
+                    const downloadLink = document.createElement('a');
+                    downloadLink.href = quality.url;
+                    downloadLink.className = 'download-option';
+                    downloadLink.download = `twitter-video-${index + 1}.mp4`;
+                    downloadLink.innerHTML = `<i class="fas fa-download"></i> ${quality.name}`;
+                    downloadOptions.appendChild(downloadLink);
+                });
+                
+                // Show result
+                resultContainer.style.display = 'block';
+            }
+            
+            // Handle URL paste event
+            twitterUrlInput.addEventListener('paste', function(e) {
+                setTimeout(() => {
+                    const pastedText = this.value.trim();
+                    if (isValidTwitterUrl(pastedText)) {
+                        // Auto-select the input text for easy replacement
+                        this.select();
+                    }
+                }, 10);
+            });
+        });
+    </script>
+</body>
+</html>
         
         .drop-area:hover {
             border-color: var(--primary-color);
