@@ -815,7 +815,793 @@
                     </div>
                 </a>
             </div>
-        </div>    </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPS to PNG Converter - ToolsHub</title>
+    <meta name="description" content="Convert EPS vector files to high-quality PNG images with our free online tool. Adjust resolution and optimize for web use.">
+    <meta name="keywords" content="EPS to PNG, convert EPS, vector to raster, EPS converter, free image tool">
+    <meta name="author" content="ToolsHub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolshub01.github.io/tools/eps-to-png">
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .main {
+            padding: 2rem 0;
+        }
+
+        .tool-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--gray-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+
+        .upload-area.active {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 168, 83, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .options {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group {
+            margin-bottom: 1rem;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .select-box, .checkbox-group, .range-slider {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: white;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input {
+            margin-right: 0.5rem;
+        }
+
+        .range-slider {
+            -webkit-appearance: none;
+            height: 8px;
+            background: #ddd;
+            outline: none;
+            padding: 0;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .range-value {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #3367d6;
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+
+        .btn-success {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-success:hover {
+            background-color: #2d9246;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .preview-area {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .preview-box {
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .preview-title {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 300px;
+            margin: 0 auto;
+            display: block;
+            background-color: #f5f5f5;
+            border: 1px solid #eee;
+        }
+
+        .file-info {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .dimensions-input {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .dimensions-input input {
+            width: 80px;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+        }
+
+        .dimensions-separator {
+            font-weight: bold;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .preview-container {
+                flex-direction: column;
+            }
+
+            .dimensions-input {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .dimensions-input input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="https://toolshub01.github.io/tools/" class="logo">ToolsHub</a>
+            <nav>
+                <ul>
+                    <li><a href="https://toolshub01.github.io/tools/">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Ad Container Top -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="tool-card">
+                <h1 class="tool-title">EPS to PNG Converter</h1>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop your EPS file here</h3>
+                    <p>or</p>
+                    <button class="btn">Select File</button>
+                    <input type="file" id="fileInput" class="file-input" accept=".eps,application/postscript">
+                </div>
+
+                <div class="options">
+                    <div class="option-group">
+                        <label for="pngQuality">PNG Quality</label>
+                        <input type="range" id="pngQuality" class="range-slider" min="1" max="100" value="90">
+                        <span class="range-value" id="qualityValue">90%</span>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Output Dimensions (px)</label>
+                        <div class="dimensions-input">
+                            <input type="number" id="width" placeholder="Width" min="10" max="10000" value="800">
+                            <span class="dimensions-separator">×</span>
+                            <input type="number" id="height" placeholder="Height" min="10" max="10000" value="600">
+                            <button id="lockAspect" class="btn btn-secondary" title="Lock aspect ratio">🔒</button>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Optimization Options</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="transparentBg" checked>
+                                <label for="transparentBg">Transparent background</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="removeMetadata">
+                                <label for="removeMetadata">Remove metadata</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="dithering">
+                                <label for="dithering">Apply dithering</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="antialias" checked>
+                                <label for="antialias">Anti-aliasing</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="colorProfile">Color Profile</label>
+                        <select id="colorProfile" class="select-box">
+                            <option value="srgb">sRGB (Web Standard)</option>
+                            <option value="adobe-rgb">Adobe RGB</option>
+                            <option value="cmyk">CMYK (Print)</option>
+                            <option value="grayscale">Grayscale</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="convertBtn" class="btn btn-success btn-block">Convert to PNG</button>
+
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p>Processing your EPS file... This may take a few moments.</p>
+                </div>
+
+                <div class="preview-area" id="previewArea">
+                    <h3>Conversion Preview</h3>
+                    <div class="preview-container">
+                        <div class="preview-box">
+                            <div class="preview-title">Original EPS</div>
+                            <img id="originalPreview" class="preview-image" alt="Original EPS Preview">
+                            <div class="file-info" id="originalInfo"></div>
+                        </div>
+                        <div class="preview-box">
+                            <div class="preview-title">PNG Preview</div>
+                            <img id="pngPreview" class="preview-image" alt="PNG Preview">
+                            <div class="file-info" id="pngInfo"></div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="downloadBtn" class="btn">Download PNG</button>
+                        <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Container Bottom -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p>&copy; 2023 ToolsHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const convertBtn = document.getElementById('convertBtn');
+            const previewArea = document.getElementById('previewArea');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const qualitySlider = document.getElementById('pngQuality');
+            const qualityValue = document.getElementById('qualityValue');
+            const widthInput = document.getElementById('width');
+            const heightInput = document.getElementById('height');
+            const lockAspectBtn = document.getElementById('lockAspect');
+            
+            let selectedFile = null;
+            let aspectRatioLocked = false;
+            let originalAspectRatio = 1;
+
+            // Update quality value display
+            qualitySlider.addEventListener('input', () => {
+                qualityValue.textContent = qualitySlider.value + '%';
+            });
+
+            // Handle aspect ratio locking
+            lockAspectBtn.addEventListener('click', () => {
+                aspectRatioLocked = !aspectRatioLocked;
+                lockAspectBtn.textContent = aspectRatioLocked ? '🔓' : '🔒';
+                if (aspectRatioLocked) {
+                    originalAspectRatio = widthInput.value / heightInput.value;
+                }
+            });
+
+            // Adjust height when width changes and aspect ratio is locked
+            widthInput.addEventListener('input', () => {
+                if (aspectRatioLocked) {
+                    heightInput.value = Math.round(widthInput.value / originalAspectRatio);
+                }
+            });
+
+            // Adjust width when height changes and aspect ratio is locked
+            heightInput.addEventListener('input', () => {
+                if (aspectRatioLocked) {
+                    widthInput.value = Math.round(heightInput.value * originalAspectRatio);
+                }
+            });
+
+            // Handle file selection
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    selectedFile = e.target.files[0];
+                    if (!selectedFile.name.toLowerCase().endsWith('.eps')) {
+                        alert('Please select an EPS file');
+                        return;
+                    }
+                    updateUploadArea();
+                    previewOriginalFile();
+                }
+            });
+
+            // Handle drag and drop
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('active');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('active');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('active');
+                
+                if (e.dataTransfer.files.length > 0) {
+                    selectedFile = e.dataTransfer.files[0];
+                    if (!selectedFile.name.toLowerCase().endsWith('.eps')) {
+                        alert('Please drop an EPS file');
+                        return;
+                    }
+                    fileInput.files = e.dataTransfer.files;
+                    updateUploadArea();
+                    previewOriginalFile();
+                }
+            });
+
+            function updateUploadArea() {
+                if (selectedFile) {
+                    uploadArea.innerHTML = `
+                        <div class="upload-icon">✅</div>
+                        <h3>${selectedFile.name}</h3>
+                        <p>${formatFileSize(selectedFile.size)}</p>
+                        <button class="btn btn-secondary">Change File</button>
+                    `;
+                }
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Show preview of original file (simulated)
+            function previewOriginalFile() {
+                const originalPreview = document.getElementById('originalPreview');
+                const originalInfo = document.getElementById('originalInfo');
+                
+                // In a real implementation, you would parse the EPS file to show a preview
+                // This is a placeholder image for demonstration
+                originalPreview.src = 'https://via.placeholder.com/300x200/4285f4/ffffff?text=EPS+Preview';
+                originalInfo.textContent = `${selectedFile.name} • ${formatFileSize(selectedFile.size)}`;
+                
+                // Clear PNG preview
+                document.getElementById('pngPreview').src = '';
+                document.getElementById('pngInfo').textContent = '';
+                
+                previewArea.style.display = 'block';
+            }
+
+            // Convert button click handler
+            convertBtn.addEventListener('click', async () => {
+                if (!selectedFile) {
+                    alert('Please select an EPS file first');
+                    return;
+                }
+
+                // Show loading indicator
+                loadingIndicator.style.display = 'block';
+                convertBtn.disabled = true;
+
+                try {
+                    // In a real implementation, you would upload the file to a server for conversion
+                    // This is a simulation for demo purposes
+                    await simulateConversion();
+                    
+                    // Scroll to preview
+                    previewArea.scrollIntoView({ behavior: 'smooth' });
+                } catch (error) {
+                    alert('Conversion failed: ' + error.message);
+                } finally {
+                    loadingIndicator.style.display = 'none';
+                    convertBtn.disabled = false;
+                }
+            });
+
+            // Simulate conversion process
+            function simulateConversion() {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        const quality = qualitySlider.value;
+                        const width = widthInput.value;
+                        const height = heightInput.value;
+                        const transparentBg = document.getElementById('transparentBg').checked;
+                        const removeMetadata = document.getElementById('removeMetadata').checked;
+                        
+                        // Generate sample result
+                        const pngPreview = document.getElementById('pngPreview');
+                        const pngInfo = document.getElementById('pngInfo');
+                        
+                        // This would be the actual PNG preview in a real implementation
+                        const bgColor = transparentBg ? 'transparent' : '34a853';
+                        pngPreview.src = `https://via.placeholder.com/${width}x${height}/${bgColor}/ffffff?text=PNG+Preview`;
+                        
+                        // Simulate file size based on quality and dimensions
+                        const sizeFactor = (quality / 100) * (width * height / (800 * 600));
+                        const pngSize = selectedFile.size * sizeFactor * 0.5;
+                        
+                        pngInfo.textContent = `converted.png • ${formatFileSize(pngSize)} (${width}×${height} px)`;
+                        
+                        resolve();
+                    }, 2000); // Simulate 2 seconds processing time
+                });
+            }
+
+            // Download button click handler
+            downloadBtn.addEventListener('click', () => {
+                if (!selectedFile) {
+                    alert('No file to download');
+                    return;
+                }
+                
+                // In a real implementation, this would download the actual converted PNG
+                // For demo, we'll create a sample PNG download
+                const width = widthInput.value;
+                const height = heightInput.value;
+                const transparentBg = document.getElementById('transparentBg').checked;
+                const bgColor = transparentBg ? 'transparent' : 'ffffff';
+                
+                // Create a canvas with the specified dimensions
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                
+                // Fill with background color
+                if (!transparentBg) {
+                    ctx.fillStyle = '#34a853';
+                    ctx.fillRect(0, 0, width, height);
+                }
+                
+                // Add some text
+                ctx.fillStyle = '#ffffff';
+                ctx.font = '20px Arial';
+                ctx.textAlign = 'center';
+                ctx.fillText('PNG Preview', width/2, height/2);
+                
+                // Convert to data URL and download
+                const dataURL = canvas.toDataURL('image/png');
+                const a = document.createElement('a');
+                a.href = dataURL;
+                a.download = selectedFile.name.replace('.eps', '') + '_converted.png';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            });
+
+            // Clear button click handler
+            clearBtn.addEventListener('click', () => {
+                fileInput.value = '';
+                selectedFile = null;
+                uploadArea.innerHTML = `
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop your EPS file here</h3>
+                    <p>or</p>
+                    <button class="btn">Select File</button>
+                `;
+                previewArea.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
+            
+        </div>
+</section>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
