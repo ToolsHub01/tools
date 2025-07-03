@@ -814,8 +814,724 @@
                         </div>
                     </div>
                 </a>
+       
             </div>
 <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart Creator - ToolsHub</title>
+    <meta name="description" content="Create beautiful charts and graphs online with our free Chart Creator tool. Supports bar, line, pie, and more chart types with customizable options.">
+    <meta name="keywords" content="chart creator, graph maker, online chart tool, data visualization, bar chart, pie chart, line chart">
+    <meta name="author" content="ToolsHub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolshub01.github.io/tools/chart-creator">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .main {
+            padding: 2rem 0;
+        }
+
+        .tool-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 400px;
+            margin-bottom: 2rem;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            background-color: white;
+        }
+
+        .options {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group-title {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .option-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-col {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .select-box, .text-input, .color-input, .number-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: white;
+        }
+
+        .color-input {
+            padding: 0.35rem 0.75rem;
+            height: 45px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input {
+            margin-right: 0.5rem;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #3367d6;
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+
+        .btn-success {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-success:hover {
+            background-color: #2d9246;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1rem;
+        }
+
+        .data-table th, .data-table td {
+            border: 1px solid #ddd;
+            padding: 0.75rem;
+            text-align: left;
+        }
+
+        .data-table th {
+            background-color: #f2f2f2;
+        }
+
+        .data-table input {
+            width: 100%;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .chart-container {
+                height: 300px;
+            }
+
+            .option-row {
+                flex-direction: column;
+            }
+
+            .option-col {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="https://toolshub01.github.io/tools/" class="logo">ToolsHub</a>
+            <nav>
+                <ul>
+                    <li><a href="https://toolshub01.github.io/tools/">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Ad Container Top -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="tool-card">
+                <h1 class="tool-title">Chart Creator</h1>
+                
+                <div class="chart-container">
+                    <canvas id="chartCanvas"></canvas>
+                </div>
+
+                <div class="options">
+                    <div class="option-group">
+                        <div class="option-group-title">Chart Data</div>
+                        <div class="option-row">
+                            <div class="option-col">
+                                <label for="chartType">Chart Type</label>
+                                <select id="chartType" class="select-box">
+                                    <option value="bar">Bar Chart</option>
+                                    <option value="line">Line Chart</option>
+                                    <option value="pie">Pie Chart</option>
+                                    <option value="doughnut">Doughnut Chart</option>
+                                    <option value="radar">Radar Chart</option>
+                                    <option value="polarArea">Polar Area Chart</option>
+                                </select>
+                            </div>
+                            <div class="option-col">
+                                <label for="chartTitle">Chart Title</label>
+                                <input type="text" id="chartTitle" class="text-input" value="Sample Chart">
+                            </div>
+                        </div>
+
+                        <table class="data-table">
+                            <thead>
+                                <tr>
+                                    <th>Label</th>
+                                    <th>Value</th>
+                                    <th>Background Color</th>
+                                    <th>Border Color</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="dataTableBody">
+                                <!-- Data rows will be added here -->
+                            </tbody>
+                        </table>
+                        <button id="addDataBtn" class="btn btn-secondary">Add Data Point</button>
+                    </div>
+
+                    <div class="option-group">
+                        <div class="option-group-title">Chart Options</div>
+                        <div class="option-row">
+                            <div class="option-col">
+                                <label for="bgColor">Background Color</label>
+                                <input type="color" id="bgColor" class="color-input" value="#ffffff">
+                            </div>
+                            <div class="option-col">
+                                <label for="textColor">Text Color</label>
+                                <input type="color" id="textColor" class="color-input" value="#333333">
+                            </div>
+                            <div class="option-col">
+                                <label for="borderWidth">Border Width</label>
+                                <input type="number" id="borderWidth" class="number-input" min="0" max="10" value="1">
+                            </div>
+                        </div>
+                        <div class="option-row">
+                            <div class="option-col">
+                                <label>Display Options</label>
+                                <div class="checkbox-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="showLegend" checked>
+                                        <label for="showLegend">Show Legend</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="showGrid" checked>
+                                        <label for="showGrid">Show Grid</label>
+                                    </div>
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="animateChart" checked>
+                                        <label for="animateChart">Animate Chart</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="option-col">
+                                <label for="animationDuration">Animation Duration (ms)</label>
+                                <input type="number" id="animationDuration" class="number-input" min="0" max="5000" value="1000">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button id="updateChartBtn" class="btn btn-success">Update Chart</button>
+                    <button id="downloadBtn" class="btn">Download Chart</button>
+                    <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                </div>
+            </div>
+
+            <!-- Ad Container Bottom -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p>&copy; 2023 ToolsHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const chartCanvas = document.getElementById('chartCanvas');
+            const chartType = document.getElementById('chartType');
+            const chartTitle = document.getElementById('chartTitle');
+            const dataTableBody = document.getElementById('dataTableBody');
+            const addDataBtn = document.getElementById('addDataBtn');
+            const updateChartBtn = document.getElementById('updateChartBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const resetBtn = document.getElementById('resetBtn');
+            const bgColor = document.getElementById('bgColor');
+            const textColor = document.getElementById('textColor');
+            const borderWidth = document.getElementById('borderWidth');
+            const showLegend = document.getElementById('showLegend');
+            const showGrid = document.getElementById('showGrid');
+            const animateChart = document.getElementById('animateChart');
+            const animationDuration = document.getElementById('animationDuration');
+            
+            let chart = null;
+            let dataPoints = [
+                { label: 'January', value: 65, bgColor: '#4285f4', borderColor: '#3367d6' },
+                { label: 'February', value: 59, bgColor: '#34a853', borderColor: '#2d9246' },
+                { label: 'March', value: 80, bgColor: '#ea4335', borderColor: '#d33426' },
+                { label: 'April', value: 81, bgColor: '#fbbc05', borderColor: '#e9ab04' },
+                { label: 'May', value: 56, bgColor: '#673ab7', borderColor: '#5e35b1' }
+            ];
+
+            // Initialize data table
+            function renderDataTable() {
+                dataTableBody.innerHTML = '';
+                dataPoints.forEach((point, index) => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td><input type="text" class="data-label" value="${point.label}" data-index="${index}"></td>
+                        <td><input type="number" class="data-value" value="${point.value}" data-index="${index}"></td>
+                        <td><input type="color" class="data-bg-color" value="${point.bgColor}" data-index="${index}"></td>
+                        <td><input type="color" class="data-border-color" value="${point.borderColor}" data-index="${index}"></td>
+                        <td><button class="btn btn-secondary remove-data-btn" data-index="${index}">Remove</button></td>
+                    `;
+                    dataTableBody.appendChild(row);
+                });
+
+                // Add event listeners to remove buttons
+                document.querySelectorAll('.remove-data-btn').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        dataPoints.splice(index, 1);
+                        renderDataTable();
+                    });
+                });
+
+                // Add event listeners to input fields
+                document.querySelectorAll('.data-label').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        dataPoints[index].label = this.value;
+                    });
+                });
+
+                document.querySelectorAll('.data-value').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        dataPoints[index].value = parseInt(this.value) || 0;
+                    });
+                });
+
+                document.querySelectorAll('.data-bg-color').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        dataPoints[index].bgColor = this.value;
+                    });
+                });
+
+                document.querySelectorAll('.data-border-color').forEach(input => {
+                    input.addEventListener('change', function() {
+                        const index = parseInt(this.getAttribute('data-index'));
+                        dataPoints[index].borderColor = this.value;
+                    });
+                });
+            }
+
+            // Add new data point
+            addDataBtn.addEventListener('click', function() {
+                const newColor = getRandomColor();
+                dataPoints.push({
+                    label: `New ${dataPoints.length + 1}`,
+                    value: Math.floor(Math.random() * 100),
+                    bgColor: newColor,
+                    borderColor: darkenColor(newColor, 20)
+                });
+                renderDataTable();
+            });
+
+            // Generate random color
+            function getRandomColor() {
+                const letters = '0123456789ABCDEF';
+                let color = '#';
+                for (let i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+                }
+                return color;
+            }
+
+            // Darken a color by a percentage
+            function darkenColor(color, percent) {
+                const num = parseInt(color.replace('#', ''), 16);
+                const amt = Math.round(2.55 * percent);
+                const R = (num >> 16) - amt;
+                const G = (num >> 8 & 0x00FF) - amt;
+                const B = (num & 0x0000FF) - amt;
+                return '#' + (
+                    0x1000000 +
+                    (R < 0 ? 0 : R) * 0x10000 +
+                    (G < 0 ? 0 : G) * 0x100 +
+                    (B < 0 ? 0 : B)
+                ).toString(16).slice(1);
+            }
+
+            // Update chart
+            function updateChart() {
+                const labels = dataPoints.map(point => point.label);
+                const values = dataPoints.map(point => point.value);
+                const bgColors = dataPoints.map(point => point.bgColor);
+                const borderColors = dataPoints.map(point => point.borderColor);
+
+                const config = {
+                    type: chartType.value,
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: chartTitle.value,
+                            data: values,
+                            backgroundColor: bgColors,
+                            borderColor: borderColors,
+                            borderWidth: parseInt(borderWidth.value)
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                display: showLegend.checked,
+                                position: 'top',
+                                labels: {
+                                    color: textColor.value
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: chartTitle.value,
+                                color: textColor.value,
+                                font: {
+                                    size: 18
+                                }
+                            }
+                        },
+                        scales: {
+                            x: {
+                                grid: {
+                                    display: showGrid.checked,
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                },
+                                ticks: {
+                                    color: textColor.value
+                                }
+                            },
+                            y: {
+                                grid: {
+                                    display: showGrid.checked,
+                                    color: 'rgba(0, 0, 0, 0.1)'
+                                },
+                                ticks: {
+                                    color: textColor.value
+                                },
+                                beginAtZero: true
+                            }
+                        },
+                        animation: {
+                            duration: animateChart.checked ? parseInt(animationDuration.value) : 0
+                        }
+                    }
+                };
+
+                // Destroy previous chart if exists
+                if (chart) {
+                    chart.destroy();
+                }
+
+                // Create new chart
+                chart = new Chart(chartCanvas, config);
+            }
+
+            // Download chart as image
+            downloadBtn.addEventListener('click', function() {
+                if (!chart) return;
+                
+                const link = document.createElement('a');
+                link.download = 'chart.png';
+                link.href = chartCanvas.toDataURL('image/png');
+                link.click();
+            });
+
+            // Reset chart
+            resetBtn.addEventListener('click', function() {
+                dataPoints = [
+                    { label: 'January', value: 65, bgColor: '#4285f4', borderColor: '#3367d6' },
+                    { label: 'February', value: 59, bgColor: '#34a853', borderColor: '#2d9246' },
+                    { label: 'March', value: 80, bgColor: '#ea4335', borderColor: '#d33426' },
+                    { label: 'April', value: 81, bgColor: '#fbbc05', borderColor: '#e9ab04' },
+                    { label: 'May', value: 56, bgColor: '#673ab7', borderColor: '#5e35b1' }
+                ];
+                
+                chartTitle.value = 'Sample Chart';
+                bgColor.value = '#ffffff';
+                textColor.value = '#333333';
+                borderWidth.value = '1';
+                showLegend.checked = true;
+                showGrid.checked = true;
+                animateChart.checked = true;
+                animationDuration.value = '1000';
+                chartType.value = 'bar';
+                
+                renderDataTable();
+                updateChart();
+            });
+
+            // Update chart button
+            updateChartBtn.addEventListener('click', updateChart);
+
+            // Initialize
+            renderDataTable();
+            updateChart();
+        });
+    </script>
+</body>
+</html>
+            
+<!DOCTYPE html
+
 <html lang="en">
 <head>
     <meta charset="UTF-8">
