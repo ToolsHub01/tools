@@ -818,7 +818,683 @@
         </div>
     </section>
 <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video to Text Converter - ToolsHub</title>
+    <meta name="description" content="Convert your video files to text transcripts with our free online tool. Supports multiple formats with high accuracy.">
+    <meta name="keywords" content="video to text, speech to text, video transcription, convert video to text, free transcription tool">
+    <meta name="author" content="ToolsHub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolshub01.github.io/tools/video-to-text">
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .main {
+            padding: 2rem 0;
+        }
+
+        .tool-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--gray-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+
+        .upload-area.active {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 168, 83, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .options {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group {
+            margin-bottom: 1rem;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .select-box, .checkbox-group {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: white;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input {
+            margin-right: 0.5rem;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #3367d6;
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+
+        .btn-success {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-success:hover {
+            background-color: #2d9246;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .result-area {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .result-text {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            resize: vertical;
+            font-family: monospace;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="https://toolshub01.github.io/tools/" class="logo">ToolsHub</a>
+            <nav>
+                <ul>
+                    <li><a href="https://toolshub01.github.io/tools/">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Ad Container Top -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="tool-card">
+                <h1 class="tool-title">Video to Text Converter</h1>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop your video file here</h3>
+                    <p>or</p>
+                    <button class="btn">Select File</button>
+                    <input type="file" id="fileInput" class="file-input" accept="video/*">
+                </div>
+
+                <div class="options">
+                    <div class="option-group">
+                        <label for="language">Language</label>
+                        <select id="language" class="select-box">
+                            <option value="en-US">English (US)</option>
+                            <option value="en-GB">English (UK)</option>
+                            <option value="es-ES">Spanish</option>
+                            <option value="fr-FR">French</option>
+                            <option value="de-DE">German</option>
+                            <option value="it-IT">Italian</option>
+                            <option value="pt-BR">Portuguese (Brazil)</option>
+                            <option value="hi-IN">Hindi</option>
+                            <option value="ja-JP">Japanese</option>
+                            <option value="zh-CN">Chinese (Simplified)</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Optimization Options</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="removeSilence" checked>
+                                <label for="removeSilence">Remove silence</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="punctuation" checked>
+                                <label for="punctuation">Add punctuation</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="speakerDiarization">
+                                <label for="speakerDiarization">Identify speakers</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="timestamps">
+                                <label for="timestamps">Include timestamps</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="outputFormat">Output Format</label>
+                        <select id="outputFormat" class="select-box">
+                            <option value="plain">Plain Text</option>
+                            <option value="srt">SRT (Subtitles)</option>
+                            <option value="vtt">WebVTT</option>
+                            <option value="json">JSON</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="convertBtn" class="btn btn-success btn-block">Convert to Text</button>
+
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p>Processing your video... This may take a few minutes.</p>
+                </div>
+
+                <div class="result-area" id="resultArea">
+                    <h3>Conversion Result</h3>
+                    <textarea class="result-text" id="resultText" readonly></textarea>
+                    <div class="action-buttons">
+                        <button id="copyBtn" class="btn btn-secondary">Copy Text</button>
+                        <button id="downloadBtn" class="btn">Download</button>
+                        <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Container Bottom -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p>&copy; 2023 ToolsHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const convertBtn = document.getElementById('convertBtn');
+            const resultArea = document.getElementById('resultArea');
+            const resultText = document.getElementById('resultText');
+            const copyBtn = document.getElementById('copyBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            
+            let selectedFile = null;
+
+            // Handle file selection
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    selectedFile = e.target.files[0];
+                    updateUploadArea();
+                }
+            });
+
+            // Handle drag and drop
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('active');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('active');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('active');
+                
+                if (e.dataTransfer.files.length > 0) {
+                    selectedFile = e.dataTransfer.files[0];
+                    fileInput.files = e.dataTransfer.files;
+                    updateUploadArea();
+                }
+            });
+
+            function updateUploadArea() {
+                if (selectedFile) {
+                    uploadArea.innerHTML = `
+                        <div class="upload-icon">✅</div>
+                        <h3>${selectedFile.name}</h3>
+                        <p>${formatFileSize(selectedFile.size)}</p>
+                        <button class="btn btn-secondary">Change File</button>
+                    `;
+                }
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Convert button click handler
+            convertBtn.addEventListener('click', async () => {
+                if (!selectedFile) {
+                    alert('Please select a video file first');
+                    return;
+                }
+
+                // Show loading indicator
+                loadingIndicator.style.display = 'block';
+                convertBtn.disabled = true;
+
+                try {
+                    // In a real implementation, you would upload the file to a server for processing
+                    // This is a simulation for demo purposes
+                    await simulateConversion();
+                    
+                    // Show result
+                    resultArea.style.display = 'block';
+                    
+                    // Scroll to result
+                    resultArea.scrollIntoView({ behavior: 'smooth' });
+                } catch (error) {
+                    alert('Conversion failed: ' + error.message);
+                } finally {
+                    loadingIndicator.style.display = 'none';
+                    convertBtn.disabled = false;
+                }
+            });
+
+            // Simulate conversion process
+            function simulateConversion() {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        const language = document.getElementById('language').value;
+                        const format = document.getElementById('outputFormat').value;
+                        const includeTimestamps = document.getElementById('timestamps').checked;
+                        const identifySpeakers = document.getElementById('speakerDiarization').checked;
+                        
+                        // Generate sample text based on options
+                        let text = '';
+                        
+                        if (format === 'plain') {
+                            text = `This is a sample transcription of your video file.\n\n`;
+                            text += `The video was processed with the following settings:\n`;
+                            text += `- Language: ${document.getElementById('language').options[document.getElementById('language').selectedIndex].text}\n`;
+                            if (includeTimestamps) text += `- Timestamps included\n`;
+                            if (identifySpeakers) text += `- Speaker identification enabled\n`;
+                            
+                            text += `\nIn a real implementation, this would be the actual transcribed text from your video's audio track.`;
+                        } 
+                        else if (format === 'srt') {
+                            text = `1\n`;
+                            text += `00:00:00,000 --> 00:00:02,000\n`;
+                            text += `This is a sample SRT subtitle file\n\n`;
+                            text += `2\n`;
+                            text += `00:00:02,500 --> 00:00:05,000\n`;
+                            text += `Generated from your video file\n\n`;
+                        }
+                        else if (format === 'vtt') {
+                            text = `WEBVTT\n\n`;
+                            text += `00:00:00.000 --> 00:00:02.000\n`;
+                            text += `This is a sample WebVTT subtitle file\n\n`;
+                            text += `00:00:02.500 --> 00:00:05.000\n`;
+                            text += `Generated from your video file\n\n`;
+                        }
+                        else if (format === 'json') {
+                            text = JSON.stringify({
+                                metadata: {
+                                    filename: selectedFile.name,
+                                    language: language,
+                                    duration: "00:05:00",
+                                    processingDate: new Date().toISOString()
+                                },
+                                segments: [
+                                    {
+                                        start: 0,
+                                        end: 2,
+                                        text: "This is a sample JSON transcription",
+                                        speaker: identifySpeakers ? "Speaker 1" : null
+                                    },
+                                    {
+                                        start: 2.5,
+                                        end: 5,
+                                        text: "Generated from your video file",
+                                        speaker: identifySpeakers ? "Speaker 2" : null
+                                    }
+                                ]
+                            }, null, 2);
+                        }
+                        
+                        resultText.value = text;
+                        resolve();
+                    }, 3000); // Simulate 3 seconds processing time
+                });
+            }
+
+            // Copy button click handler
+            copyBtn.addEventListener('click', () => {
+                resultText.select();
+                document.execCommand('copy');
+                
+                // Change button text temporarily
+                const originalText = copyBtn.textContent;
+                copyBtn.textContent = 'Copied!';
+                setTimeout(() => {
+                    copyBtn.textContent = originalText;
+                }, 2000);
+            });
+
+            // Download button click handler
+            downloadBtn.addEventListener('click', () => {
+                if (!resultText.value) {
+                    alert('No text to download');
+                    return;
+                }
+                
+                const format = document.getElementById('outputFormat').value;
+                let extension = '.txt';
+                let mimeType = 'text/plain';
+                
+                if (format === 'srt') {
+                    extension = '.srt';
+                } else if (format === 'vtt') {
+                    extension = '.vtt';
+                } else if (format === 'json') {
+                    extension = '.json';
+                    mimeType = 'application/json';
+                }
+                
+                const blob = new Blob([resultText.value], { type: mimeType });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = selectedFile.name.replace(/\.[^/.]+$/, '') + '_transcript' + extension;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+
+            // Clear button click handler
+            clearBtn.addEventListener('click', () => {
+                resultText.value = '';
+                resultArea.style.display = 'none';
+                fileInput.value = '';
+                selectedFile = null;
+                uploadArea.innerHTML = `
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop your video file here</h3>
+                    <p>or</p>
+                    <button class="btn">Select File</button>
+                `;
+            });
+        });
+    </script>
+</body>
+</html>
         
      <!DOCTYPE html>
 <html lang="en">
