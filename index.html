@@ -1969,6 +1969,990 @@
                     <input type="file" id="fileInput" class="file-input" accept=".eps,application/postscript">
                 </div>
 
+
+                <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Signup Tools - ToolsHub</title>
+    <meta name="description" content="Generate secure login and signup forms for your website with our free online tool. Customize styles and get responsive HTML/CSS code.">
+    <meta name="keywords" content="login form generator, signup form creator, HTML form builder, responsive form tool, web development tools">
+    <meta name="author" content="ToolsHub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolshub01.github.io/tools/login-signup">
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .main {
+            padding: 2rem 0;
+        }
+
+        .tool-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .form-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .form-preview {
+            flex: 1;
+            min-width: 300px;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: var(--border-radius);
+            background-color: var(--light-color);
+        }
+
+        .form-options {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .form-toggle {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+
+        .form-toggle-btn {
+            flex: 1;
+            padding: 0.75rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            background: none;
+            font-weight: 500;
+        }
+
+        .form-toggle-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .demo-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            background-color: white;
+            box-shadow: var(--box-shadow);
+        }
+
+        .demo-form h3 {
+            margin-bottom: 1.5rem;
+            text-align: center;
+            color: var(--dark-color);
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background-color: #3367d6;
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+
+        .btn-success {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-success:hover {
+            background-color: #2d9246;
+        }
+
+        .options {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group-title {
+            font-size: 1.1rem;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.25rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .option-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .option-col {
+            flex: 1;
+            min-width: 150px;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .select-box, .text-input, .color-input, .number-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: white;
+        }
+
+        .color-input {
+            padding: 0.35rem 0.75rem;
+            height: 45px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input {
+            margin-right: 0.5rem;
+        }
+
+        .result-area {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .code-tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 1rem;
+        }
+
+        .code-tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-bottom: none;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+            margin-right: 0.5rem;
+            background-color: #f0f0f0;
+        }
+
+        .code-tab.active {
+            background-color: white;
+            border-color: #ddd;
+            border-bottom-color: white;
+            margin-bottom: -1px;
+        }
+
+        .code-content {
+            display: none;
+        }
+
+        .code-content.active {
+            display: block;
+        }
+
+        .code-block {
+            width: 100%;
+            min-height: 200px;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: monospace;
+            white-space: pre-wrap;
+            background-color: #f8f8f8;
+            overflow-x: auto;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .option-row {
+                flex-direction: column;
+            }
+
+            .option-col {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="https://toolshub01.github.io/tools/" class="logo">ToolsHub</a>
+            <nav>
+                <ul>
+                    <li><a href="https://toolshub01.github.io/tools/">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Ad Container Top -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="tool-card">
+                <h1 class="tool-title">Login & Signup Form Generator</h1>
+                
+                <div class="form-container">
+                    <div class="form-preview">
+                        <div class="form-toggle">
+                            <button class="form-toggle-btn active" id="loginToggle">Login Form</button>
+                            <button class="form-toggle-btn" id="signupToggle">Signup Form</button>
+                        </div>
+                        
+                        <div class="demo-form" id="loginForm">
+                            <h3>Login to Your Account</h3>
+                            <form id="previewLoginForm">
+                                <div class="form-group">
+                                    <label for="previewEmail">Email</label>
+                                    <input type="email" id="previewEmail" class="form-control" placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="previewPassword">Password</label>
+                                    <input type="password" id="previewPassword" class="form-control" placeholder="Enter your password">
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="previewRemember">
+                                        <label for="previewRemember">Remember me</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn">Login</button>
+                                <div class="form-group" style="text-align: center; margin-top: 1rem;">
+                                    <a href="#" style="color: var(--primary-color);">Forgot password?</a>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="demo-form" id="signupForm" style="display: none;">
+                            <h3>Create Your Account</h3>
+                            <form id="previewSignupForm">
+                                <div class="form-group">
+                                    <label for="previewName">Full Name</label>
+                                    <input type="text" id="previewName" class="form-control" placeholder="Enter your full name">
+                                </div>
+                                <div class="form-group">
+                                    <label for="previewSignupEmail">Email</label>
+                                    <input type="email" id="previewSignupEmail" class="form-control" placeholder="Enter your email">
+                                </div>
+                                <div class="form-group">
+                                    <label for="previewSignupPassword">Password</label>
+                                    <input type="password" id="previewSignupPassword" class="form-control" placeholder="Create a password">
+                                </div>
+                                <div class="form-group">
+                                    <label for="previewConfirmPassword">Confirm Password</label>
+                                    <input type="password" id="previewConfirmPassword" class="form-control" placeholder="Confirm your password">
+                                </div>
+                                <div class="form-group">
+                                    <div class="checkbox-item">
+                                        <input type="checkbox" id="previewTerms">
+                                        <label for="previewTerms">I agree to the Terms of Service</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn">Sign Up</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <div class="form-options">
+                        <div class="option-group">
+                            <div class="option-group-title">Form Options</div>
+                            <div class="option-row">
+                                <div class="option-col">
+                                    <label for="formType">Form Type</label>
+                                    <select id="formType" class="select-box">
+                                        <option value="login">Login Form</option>
+                                        <option value="signup">Signup Form</option>
+                                    </select>
+                                </div>
+                                <div class="option-col">
+                                    <label for="formStyle">Form Style</label>
+                                    <select id="formStyle" class="select-box">
+                                        <option value="default">Default</option>
+                                        <option value="modern">Modern</option>
+                                        <option value="minimal">Minimal</option>
+                                        <option value="material">Material Design</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <div class="option-col">
+                                    <label for="primaryColor">Primary Color</label>
+                                    <input type="color" id="primaryColor" class="color-input" value="#4285f4">
+                                </div>
+                                <div class="option-col">
+                                    <label for="textColor">Text Color</label>
+                                    <input type="color" id="textColor" class="color-input" value="#202124">
+                                </div>
+                            </div>
+                            <div class="option-row">
+                                <div class="option-col">
+                                    <label for="bgColor">Background Color</label>
+                                    <input type="color" id="bgColor" class="color-input" value="#ffffff">
+                                </div>
+                                <div class="option-col">
+                                    <label for="borderRadius">Border Radius</label>
+                                    <input type="number" id="borderRadius" class="number-input" min="0" max="20" value="8">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="option-group">
+                            <div class="option-group-title">Form Fields</div>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="showRemember" checked>
+                                    <label for="showRemember">Show Remember Me</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="showForgotPassword" checked>
+                                    <label for="showForgotPassword">Show Forgot Password</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="showTerms" checked>
+                                    <label for="showTerms">Show Terms Checkbox</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="showSocialLogin">
+                                    <label for="showSocialLogin">Show Social Login</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button id="generateBtn" class="btn btn-success">Generate Code</button>
+                    </div>
+                </div>
+                
+                <div class="result-area" id="resultArea">
+                    <div class="code-tabs">
+                        <div class="code-tab active" data-tab="html">HTML</div>
+                        <div class="code-tab" data-tab="css">CSS</div>
+                        <div class="code-tab" data-tab="js">JavaScript</div>
+                    </div>
+                    
+                    <div class="code-content active" id="htmlCode">
+                        <textarea class="code-block" id="htmlCodeBlock" readonly></textarea>
+                    </div>
+                    
+                    <div class="code-content" id="cssCode">
+                        <textarea class="code-block" id="cssCodeBlock" readonly></textarea>
+                    </div>
+                    
+                    <div class="code-content" id="jsCode">
+                        <textarea class="code-block" id="jsCodeBlock" readonly></textarea>
+                    </div>
+                    
+                    <div class="action-buttons">
+                        <button id="copyHtmlBtn" class="btn btn-secondary">Copy HTML</button>
+                        <button id="copyCssBtn" class="btn btn-secondary">Copy CSS</button>
+                        <button id="copyJsBtn" class="btn btn-secondary">Copy JavaScript</button>
+                        <button id="downloadAllBtn" class="btn">Download All</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Container Bottom -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p>&copy; 2023 ToolsHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // DOM Elements
+            const loginToggle = document.getElementById('loginToggle');
+            const signupToggle = document.getElementById('signupToggle');
+            const loginForm = document.getElementById('loginForm');
+            const signupForm = document.getElementById('signupForm');
+            const formType = document.getElementById('formType');
+            const generateBtn = document.getElementById('generateBtn');
+            const resultArea = document.getElementById('resultArea');
+            const htmlCodeBlock = document.getElementById('htmlCodeBlock');
+            const cssCodeBlock = document.getElementById('cssCodeBlock');
+            const jsCodeBlock = document.getElementById('jsCodeBlock');
+            const copyHtmlBtn = document.getElementById('copyHtmlBtn');
+            const copyCssBtn = document.getElementById('copyCssBtn');
+            const copyJsBtn = document.getElementById('copyJsBtn');
+            const downloadAllBtn = document.getElementById('downloadAllBtn');
+            const codeTabs = document.querySelectorAll('.code-tab');
+            const codeContents = document.querySelectorAll('.code-content');
+            
+            // Toggle between login and signup preview
+            loginToggle.addEventListener('click', function() {
+                loginToggle.classList.add('active');
+                signupToggle.classList.remove('active');
+                loginForm.style.display = 'block';
+                signupForm.style.display = 'none';
+                formType.value = 'login';
+            });
+            
+            signupToggle.addEventListener('click', function() {
+                signupToggle.classList.add('active');
+                loginToggle.classList.remove('active');
+                signupForm.style.display = 'block';
+                loginForm.style.display = 'none';
+                formType.value = 'signup';
+            });
+            
+            // Code tab switching
+            codeTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Remove active class from all tabs and contents
+                    codeTabs.forEach(t => t.classList.remove('active'));
+                    codeContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    this.classList.add('active');
+                    document.getElementById(tabId + 'Code').classList.add('active');
+                });
+            });
+            
+            // Generate code
+            generateBtn.addEventListener('click', function() {
+                const type = formType.value;
+                const style = document.getElementById('formStyle').value;
+                const primaryColor = document.getElementById('primaryColor').value;
+                const textColor = document.getElementById('textColor').value;
+                const bgColor = document.getElementById('bgColor').value;
+                const borderRadius = document.getElementById('borderRadius').value;
+                const showRemember = document.getElementById('showRemember').checked;
+                const showForgotPassword = document.getElementById('showForgotPassword').checked;
+                const showTerms = document.getElementById('showTerms').checked;
+                const showSocialLogin = document.getElementById('showSocialLogin').checked;
+                
+                // Generate HTML
+                let html = '';
+                if (type === 'login') {
+                    html = `<!-- Login Form HTML -->
+<div class="form-container" style="max-width: 400px; margin: 0 auto; padding: 1.5rem; border-radius: ${borderRadius}px; background-color: ${bgColor}; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+    <h3 style="margin-bottom: 1.5rem; text-align: center; color: ${textColor};">Login to Your Account</h3>
+    <form id="loginForm">
+        <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: ${textColor};">Email</label>
+            <input type="email" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; font-size: 1rem;" placeholder="Enter your email" required>
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: ${textColor};">Password</label>
+            <input type="password" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; font-size: 1rem;" placeholder="Enter your password" required>
+        </div>`;
+                    
+                    if (showRemember) {
+                        html += `
+        <div style="margin-bottom: 1rem; display: flex; align-items: center;">
+            <input type="checkbox" id="remember" style="margin-right: 0.5rem;">
+            <label for="remember" style="color: ${textColor};">Remember me</label>
+        </div>`;
+                    }
+                    
+                    html += `
+        <button type="submit" style="width: 100%; padding: 0.75rem 1.5rem; background-color: ${primaryColor}; color: white; border: none; border-radius: ${borderRadius}px; font-size: 1rem; font-weight: 500; cursor: pointer;">Login</button>`;
+                    
+                    if (showForgotPassword) {
+                        html += `
+        <div style="text-align: center; margin-top: 1rem;">
+            <a href="#" style="color: ${primaryColor};">Forgot password?</a>
+        </div>`;
+                    }
+                    
+                    if (showSocialLogin) {
+                        html += `
+        <div style="margin-top: 1.5rem; text-align: center;">
+            <p style="color: ${textColor}; margin-bottom: 1rem;">Or login with</p>
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+                <button type="button" style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; background-color: white; cursor: pointer;">Google</button>
+                <button type="button" style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; background-color: white; cursor: pointer;">Facebook</button>
+            </div>
+        </div>`;
+                    }
+                    
+                    html += `
+    </form>
+</div>`;
+                } else {
+                    html = `<!-- Signup Form HTML -->
+<div class="form-container" style="max-width: 400px; margin: 0 auto; padding: 1.5rem; border-radius: ${borderRadius}px; background-color: ${bgColor}; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">
+    <h3 style="margin-bottom: 1.5rem; text-align: center; color: ${textColor};">Create Your Account</h3>
+    <form id="signupForm">
+        <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: ${textColor};">Full Name</label>
+            <input type="text" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; font-size: 1rem;" placeholder="Enter your full name" required>
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: ${textColor};">Email</label>
+            <input type="email" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; font-size: 1rem;" placeholder="Enter your email" required>
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: ${textColor};">Password</label>
+            <input type="password" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; font-size: 1rem;" placeholder="Create a password" required>
+        </div>
+        <div style="margin-bottom: 1rem;">
+            <label style="display: block; margin-bottom: 0.5rem; font-weight: 500; color: ${textColor};">Confirm Password</label>
+            <input type="password" style="width: 100%; padding: 0.75rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; font-size: 1rem;" placeholder="Confirm your password" required>
+        </div>`;
+                    
+                    if (showTerms) {
+                        html += `
+        <div style="margin-bottom: 1rem; display: flex; align-items: center;">
+            <input type="checkbox" id="terms" style="margin-right: 0.5rem;" required>
+            <label for="terms" style="color: ${textColor};">I agree to the Terms of Service</label>
+        </div>`;
+                    }
+                    
+                    html += `
+        <button type="submit" style="width: 100%; padding: 0.75rem 1.5rem; background-color: ${primaryColor}; color: white; border: none; border-radius: ${borderRadius}px; font-size: 1rem; font-weight: 500; cursor: pointer;">Sign Up</button>`;
+                    
+                    if (showSocialLogin) {
+                        html += `
+        <div style="margin-top: 1.5rem; text-align: center;">
+            <p style="color: ${textColor}; margin-bottom: 1rem;">Or sign up with</p>
+            <div style="display: flex; justify-content: center; gap: 1rem;">
+                <button type="button" style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; background-color: white; cursor: pointer;">Google</button>
+                <button type="button" style="padding: 0.5rem 1rem; border: 1px solid #ddd; border-radius: ${borderRadius}px; background-color: white; cursor: pointer;">Facebook</button>
+            </div>
+        </div>`;
+                    }
+                    
+                    html += `
+    </form>
+</div>`;
+                }
+                
+                // Generate CSS
+                const css = `/* Form CSS */
+.form-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+    border-radius: ${borderRadius}px;
+    background-color: ${bgColor};
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-container h3 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: ${textColor};
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: ${textColor};
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: ${borderRadius}px;
+    font-size: 1rem;
+}
+
+.btn {
+    width: 100%;
+    padding: 0.75rem 1.5rem;
+    background-color: ${primaryColor};
+    color: white;
+    border: none;
+    border-radius: ${borderRadius}px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+.social-login {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+
+.social-login p {
+    color: ${textColor};
+    margin-bottom: 1rem;
+}
+
+.social-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.social-btn {
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: ${borderRadius}px;
+    background-color: white;
+    cursor: pointer;
+}`;
+                
+                // Generate JavaScript
+                const js = `// Form JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('${type === 'login' ? 'loginForm' : 'signupForm'}');
+    
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Get form values
+        ${type === 'login' ? `
+        const email = form.querySelector('input[type="email"]').value;
+        const password = form.querySelector('input[type="password"]').value;
+        const remember = form.querySelector('input[type="checkbox"]')?.checked;
+        ` : `
+        const name = form.querySelector('input[type="text"]').value;
+        const email = form.querySelector('input[type="email"]').value;
+        const password = form.querySelectorAll('input[type="password"]')[0].value;
+        const confirmPassword = form.querySelectorAll('input[type="password"]')[1].value;
+        const terms = form.querySelector('input[type="checkbox"]')?.checked;
+        
+        // Validate password match
+        if (password !== confirmPassword) {
+            alert('Passwords do not match');
+            return;
+        }
+        `}
+        
+        // Here you would typically send the data to your server
+        console.log('Form submitted:', {
+            ${type === 'login' ? `
+            email,
+            password,
+            remember
+            ` : `
+            name,
+            email,
+            password,
+            terms
+            `}
+        });
+        
+        // For demo purposes, we'll just show an alert
+        alert('${type === 'login' ? 'Login' : 'Signup'} form submitted successfully!');
+    });
+});`;
+                
+                // Update code blocks
+                htmlCodeBlock.value = html;
+                cssCodeBlock.value = css;
+                jsCodeBlock.value = js;
+                
+                // Show result area
+                resultArea.style.display = 'block';
+                resultArea.scrollIntoView({ behavior: 'smooth' });
+            });
+            
+            // Copy code buttons
+            copyHtmlBtn.addEventListener('click', function() {
+                htmlCodeBlock.select();
+                document.execCommand('copy');
+                alert('HTML code copied to clipboard!');
+            });
+            
+            copyCssBtn.addEventListener('click', function() {
+                cssCodeBlock.select();
+                document.execCommand('copy');
+                alert('CSS code copied to clipboard!');
+            });
+            
+            copyJsBtn.addEventListener('click', function() {
+                jsCodeBlock.select();
+                document.execCommand('copy');
+                alert('JavaScript code copied to clipboard!');
+            });
+            
+            // Download all code
+            downloadAllBtn.addEventListener('click', function() {
+                const html = htmlCodeBlock.value;
+                const css = cssCodeBlock.value;
+                const js = jsCodeBlock.value;
+                
+                // Create a zip file with all three files
+                const zipContent = `<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${formType.value === 'login' ? 'Login' : 'Signup'} Form</title>
+    <style>
+        ${css}
+    </style>
+</head>
+<body>
+    ${html}
+    <script>
+        ${js}
+    </script>
+</body>
+</html>`;
+                
+                // Create download link
+                const blob = new Blob([zipContent], { type: 'text/html' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `${formType.value}-form.html`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+            
+            // Initialize with login form
+            formType.value = 'login';
+        });
+    </script>
+</body>
+</html>
                 <div class="options">
                     <div class="option-group">
                         <label for="pngQuality">PNG Quality</label>
