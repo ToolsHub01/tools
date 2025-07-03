@@ -815,9 +815,715 @@
                     </div>
                 </a>
             </div>
-        </div>
-    </section>
+        </div>    </section>
 <!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSD to PDF Converter - ToolsHub</title>
+    <meta name="description" content="Convert Photoshop PSD files to PDF documents with our free online tool. Maintain quality while reducing file size.">
+    <meta name="keywords" content="PSD to PDF, convert PSD, Photoshop to PDF, PSD converter, free PSD tool">
+    <meta name="author" content="ToolsHub">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://toolshub01.github.io/tools/psd-to-pdf">
+    <style>
+        :root {
+            --primary-color: #4285f4;
+            --secondary-color: #34a853;
+            --accent-color: #ea4335;
+            --light-color: #f8f9fa;
+            --dark-color: #202124;
+            --gray-color: #5f6368;
+            --border-radius: 8px;
+            --box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background-color: white;
+            box-shadow: var(--box-shadow);
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--gray-color);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .main {
+            padding: 2rem 0;
+        }
+
+        .tool-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .tool-title {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 2px dashed var(--gray-color);
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-area:hover {
+            border-color: var(--primary-color);
+            background-color: rgba(66, 133, 244, 0.05);
+        }
+
+        .upload-area.active {
+            border-color: var(--secondary-color);
+            background-color: rgba(52, 168, 83, 0.05);
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .options {
+            margin-bottom: 1.5rem;
+        }
+
+        .option-group {
+            margin-bottom: 1rem;
+        }
+
+        .option-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .select-box, .checkbox-group, .range-slider {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            background-color: white;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+        }
+
+        .checkbox-item input {
+            margin-right: 0.5rem;
+        }
+
+        .range-slider {
+            -webkit-appearance: none;
+            height: 8px;
+            background: #ddd;
+            outline: none;
+            padding: 0;
+        }
+
+        .range-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: var(--primary-color);
+            cursor: pointer;
+        }
+
+        .range-value {
+            display: inline-block;
+            margin-left: 0.5rem;
+            font-weight: bold;
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius);
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: #3367d6;
+        }
+
+        .btn-secondary {
+            background-color: var(--gray-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #4d5156;
+        }
+
+        .btn-success {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-success:hover {
+            background-color: #2d9246;
+        }
+
+        .btn-block {
+            display: block;
+            width: 100%;
+        }
+
+        .preview-area {
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .preview-box {
+            flex: 1;
+            min-width: 200px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .preview-title {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .preview-image {
+            max-width: 100%;
+            max-height: 200px;
+            margin: 0 auto;
+            display: block;
+        }
+
+        .file-info {
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-color);
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .ad-container {
+            margin: 2rem 0;
+            text-align: center;
+            background-color: #f0f0f0;
+            padding: 1rem;
+            border-radius: var(--border-radius);
+        }
+
+        .ad-label {
+            font-size: 0.8rem;
+            color: var(--gray-color);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+        }
+
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+
+        .loading {
+            display: none;
+            text-align: center;
+            margin: 1rem 0;
+        }
+
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 30px;
+            height: 30px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+            }
+
+            nav ul {
+                margin-top: 1rem;
+            }
+
+            nav ul li {
+                margin-left: 1rem;
+                margin-right: 1rem;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .preview-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="https://toolshub01.github.io/tools/" class="logo">ToolsHub</a>
+            <nav>
+                <ul>
+                    <li><a href="https://toolshub01.github.io/tools/">Home</a></li>
+                    <li><a href="#">Tools</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <!-- Ad Container Top -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+
+            <div class="tool-card">
+                <h1 class="tool-title">PSD to PDF Converter</h1>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop your PSD file here</h3>
+                    <p>or</p>
+                    <button class="btn">Select File</button>
+                    <input type="file" id="fileInput" class="file-input" accept=".psd,image/vnd.adobe.photoshop">
+                </div>
+
+                <div class="options">
+                    <div class="option-group">
+                        <label for="pdfQuality">PDF Quality</label>
+                        <input type="range" id="pdfQuality" class="range-slider" min="1" max="100" value="90">
+                        <span class="range-value" id="qualityValue">90%</span>
+                    </div>
+
+                    <div class="option-group">
+                        <label>Optimization Options</label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="flattenLayers" checked>
+                                <label for="flattenLayers">Flatten layers</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="compressImages" checked>
+                                <label for="compressImages">Compress images</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="preserveText">
+                                <label for="preserveText">Preserve text as text</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="embedFonts">
+                                <label for="embedFonts">Embed fonts</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="pageSize">Page Size</label>
+                        <select id="pageSize" class="select-box">
+                            <option value="original">Original Size</option>
+                            <option value="a4">A4 (210 × 297 mm)</option>
+                            <option value="letter">Letter (8.5 × 11 in)</option>
+                            <option value="legal">Legal (8.5 × 14 in)</option>
+                        </select>
+                    </div>
+
+                    <div class="option-group">
+                        <label for="orientation">Orientation</label>
+                        <select id="orientation" class="select-box">
+                            <option value="auto">Auto</option>
+                            <option value="portrait">Portrait</option>
+                            <option value="landscape">Landscape</option>
+                        </select>
+                    </div>
+                </div>
+
+                <button id="convertBtn" class="btn btn-success btn-block">Convert to PDF</button>
+
+                <div class="loading" id="loadingIndicator">
+                    <div class="spinner"></div>
+                    <p>Processing your PSD file... This may take a few moments.</p>
+                </div>
+
+                <div class="preview-area" id="previewArea">
+                    <h3>Conversion Preview</h3>
+                    <div class="preview-container">
+                        <div class="preview-box">
+                            <div class="preview-title">Original PSD</div>
+                            <img id="originalPreview" class="preview-image" alt="Original PSD Preview">
+                            <div class="file-info" id="originalInfo"></div>
+                        </div>
+                        <div class="preview-box">
+                            <div class="preview-title">PDF Preview</div>
+                            <img id="pdfPreview" class="preview-image" alt="PDF Preview">
+                            <div class="file-info" id="pdfInfo"></div>
+                        </div>
+                    </div>
+                    <div class="action-buttons">
+                        <button id="downloadBtn" class="btn">Download PDF</button>
+                        <button id="clearBtn" class="btn btn-secondary">Clear</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ad Container Bottom -->
+            <div class="ad-container">
+                <span class="ad-label">Advertisement</span>
+                <!-- Replace with your Google AdSense code -->
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                    crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                    style="display:block"
+                    data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                    data-ad-slot="YOUR_AD_SLOT_ID"
+                    data-ad-format="auto"
+                    data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">FAQ</a>
+            </div>
+            <p>&copy; 2023 ToolsHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const convertBtn = document.getElementById('convertBtn');
+            const previewArea = document.getElementById('previewArea');
+            const loadingIndicator = document.getElementById('loadingIndicator');
+            const downloadBtn = document.getElementById('downloadBtn');
+            const clearBtn = document.getElementById('clearBtn');
+            const qualitySlider = document.getElementById('pdfQuality');
+            const qualityValue = document.getElementById('qualityValue');
+            
+            let selectedFile = null;
+
+            // Update quality value display
+            qualitySlider.addEventListener('input', () => {
+                qualityValue.textContent = qualitySlider.value + '%';
+            });
+
+            // Handle file selection
+            uploadArea.addEventListener('click', () => fileInput.click());
+            
+            fileInput.addEventListener('change', (e) => {
+                if (e.target.files.length > 0) {
+                    selectedFile = e.target.files[0];
+                    if (!selectedFile.name.toLowerCase().endsWith('.psd')) {
+                        alert('Please select a PSD file');
+                        return;
+                    }
+                    updateUploadArea();
+                    previewOriginalFile();
+                }
+            });
+
+            // Handle drag and drop
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                uploadArea.classList.add('active');
+            });
+
+            uploadArea.addEventListener('dragleave', () => {
+                uploadArea.classList.remove('active');
+            });
+
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                uploadArea.classList.remove('active');
+                
+                if (e.dataTransfer.files.length > 0) {
+                    selectedFile = e.dataTransfer.files[0];
+                    if (!selectedFile.name.toLowerCase().endsWith('.psd')) {
+                        alert('Please drop a PSD file');
+                        return;
+                    }
+                    fileInput.files = e.dataTransfer.files;
+                    updateUploadArea();
+                    previewOriginalFile();
+                }
+            });
+
+            function updateUploadArea() {
+                if (selectedFile) {
+                    uploadArea.innerHTML = `
+                        <div class="upload-icon">✅</div>
+                        <h3>${selectedFile.name}</h3>
+                        <p>${formatFileSize(selectedFile.size)}</p>
+                        <button class="btn btn-secondary">Change File</button>
+                    `;
+                }
+            }
+
+            function formatFileSize(bytes) {
+                if (bytes === 0) return '0 Bytes';
+                const k = 1024;
+                const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+                const i = Math.floor(Math.log(bytes) / Math.log(k));
+                return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+            }
+
+            // Show preview of original file (simulated)
+            function previewOriginalFile() {
+                const originalPreview = document.getElementById('originalPreview');
+                const originalInfo = document.getElementById('originalInfo');
+                
+                // In a real implementation, you would parse the PSD file to show a preview
+                // This is a placeholder image for demonstration
+                originalPreview.src = 'https://via.placeholder.com/300x200/4285f4/ffffff?text=PSD+Preview';
+                originalInfo.textContent = `${selectedFile.name} • ${formatFileSize(selectedFile.size)}`;
+                
+                // Clear PDF preview
+                document.getElementById('pdfPreview').src = '';
+                document.getElementById('pdfInfo').textContent = '';
+                
+                previewArea.style.display = 'block';
+            }
+
+            // Convert button click handler
+            convertBtn.addEventListener('click', async () => {
+                if (!selectedFile) {
+                    alert('Please select a PSD file first');
+                    return;
+                }
+
+                // Show loading indicator
+                loadingIndicator.style.display = 'block';
+                convertBtn.disabled = true;
+
+                try {
+                    // In a real implementation, you would upload the file to a server for conversion
+                    // This is a simulation for demo purposes
+                    await simulateConversion();
+                    
+                    // Scroll to preview
+                    previewArea.scrollIntoView({ behavior: 'smooth' });
+                } catch (error) {
+                    alert('Conversion failed: ' + error.message);
+                } finally {
+                    loadingIndicator.style.display = 'none';
+                    convertBtn.disabled = false;
+                }
+            });
+
+            // Simulate conversion process
+            function simulateConversion() {
+                return new Promise((resolve) => {
+                    setTimeout(() => {
+                        const quality = qualitySlider.value;
+                        const pageSize = document.getElementById('pageSize').value;
+                        const orientation = document.getElementById('orientation').value;
+                        const flattenLayers = document.getElementById('flattenLayers').checked;
+                        const compressImages = document.getElementById('compressImages').checked;
+                        
+                        // Generate sample result
+                        const pdfPreview = document.getElementById('pdfPreview');
+                        const pdfInfo = document.getElementById('pdfInfo');
+                        
+                        // This would be the actual PDF preview in a real implementation
+                        pdfPreview.src = 'https://via.placeholder.com/300x200/34a853/ffffff?text=PDF+Preview';
+                        
+                        // Simulate file size reduction based on quality
+                        const originalSize = selectedFile.size;
+                        const qualityFactor = quality / 100;
+                        const compressedSize = originalSize * qualityFactor * (compressImages ? 0.7 : 1);
+                        
+                        pdfInfo.textContent = `converted.pdf • ${formatFileSize(compressedSize)} (${quality}% quality)`;
+                        
+                        resolve();
+                    }, 2000); // Simulate 2 seconds processing time
+                });
+            }
+
+            // Download button click handler
+            downloadBtn.addEventListener('click', () => {
+                if (!selectedFile) {
+                    alert('No file to download');
+                    return;
+                }
+                
+                // In a real implementation, this would download the actual converted PDF
+                // For demo, we'll create a sample PDF download
+                const quality = qualitySlider.value;
+                const blob = new Blob(['This would be the actual PDF file in a real implementation'], { type: 'application/pdf' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = selectedFile.name.replace('.psd', '') + '_converted.pdf';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+            });
+
+            // Clear button click handler
+            clearBtn.addEventListener('click', () => {
+                fileInput.value = '';
+                selectedFile = null;
+                uploadArea.innerHTML = `
+                    <div class="upload-icon">📁</div>
+                    <h3>Drag & Drop your PSD file here</h3>
+                    <p>or</p>
+                    <button class="btn">Select File</button>
+                `;
+                previewArea.style.display = 'none';
+            });
+        });
+    </script>
+</body>
+</html>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
